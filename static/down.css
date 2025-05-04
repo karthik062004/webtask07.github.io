@@ -1,0 +1,266 @@
+body {
+    font-family: Arial, sans-serif; /* Ensured the font is consistent across all elements */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    font-size: 16px; /* Base font size */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #008080;
+    padding: 15px 50px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Ensured uniform font size */
+}
+
+header:hover {
+    background-color: black;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-right: 90px;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px; /* Matching font size */
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9800;
+}
+
+
+/* Video Container */
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 190px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Video Card */
+.video-card {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+}
+.logs{
+    border-radius: 90px;
+}
+.foot {
+    text-align: center;
+    background-color:  #008080;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+    font-size: 16px; /* Matching font size */
+}
+video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #161315;
+    color: white;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid  #D3D3D3;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #aca7a7;
+}
+
+/* Social Media Icons */
+.footer-section.social a {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.footer-section.social a:hover {
+    color: #aca7a7;
+}
+
+.footer-section.social i {
+    margin-right: 8px;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+    text-align: center;
+    background-color: #008080;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Tablet Styles (Portrait & Landscape) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Header */
+    header {
+        padding: 15px 30px;
+    }
+
+    .footer-container {
+        flex-direction: row;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+}
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .courses .course-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    video {
+        width: 90%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        padding: 10px 0;
+    }
+}
+
+/* Tablet Styles (Portrait & Landscape) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Header */
+    header {
+        padding: 15px 30px;
+    }
+
+    .footer-container {
+        flex-direction: row;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    
+}

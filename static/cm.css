@@ -1,0 +1,231 @@
+.enroll-btn {
+    background-color: #008080;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    display: inline-block;
+  }
+
+  .enroll-btn:hover {
+    background-color: #006666;
+  }
+
+  /* Same footer styles as before */
+  footer {
+    background-color: #161315;
+    color: white;
+    padding: 40px 0 0;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footer-section {
+    flex: 1 1 250px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+  }
+
+  .footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #ff9800;
+  }
+
+  .footer-section p, 
+  .footer-section ul li, 
+  .footer-section a {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+
+  .footer-section ul {
+    list-style: none;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-section a {
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-section a:hover {
+    color: #ff9800;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .social-links a {
+    font-size: 1.2rem;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    background-color: #008080;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      padding: 15px 20px;
+    }
+
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 90px;
+      right: 20px;
+      background-color: #008080;
+      flex-direction: column;
+      width: 200px;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    nav ul.show {
+      display: flex;
+    }
+    /* Chatbox Styling */
+.chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    z-index: 1000;
+}
+
+.chatbox-header {
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbox-body {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.chat-message {
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.chat-message.user {
+    background-color: #d1f7d7;
+    align-self: flex-end;
+}
+
+.chatbox input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.send-button {
+    padding: 10px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #007c6c;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    
+    nav ul {
+        margin-right: 0;
+    }
+    
+    .member-card {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ss {
+        text-align: right;
+        margin-left: auto;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-card img {
+        width: 120px;
+        height: 120px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+  }

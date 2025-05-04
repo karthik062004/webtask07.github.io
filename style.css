@@ -1,0 +1,417 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    font-size: 1rem;
+}
+
+.logs {
+    border-radius: 90px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #008080;
+    padding: 15px 50px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.125rem;
+}
+
+header:hover {
+    background-color: black;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-right: 90px;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.125rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9800;
+}
+
+h1, p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 50px;
+    background: url('clgs.jpg') no-repeat center center/cover;
+    color: white;
+    height: 350px;
+    margin-top: 100px;
+    animation: fadeIn 2s ease-in-out;
+    font-size: 1.125rem;
+}
+
+.hero h1 {
+    font-size: 1.5rem;
+}
+
+.hero p {
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #e68900;
+}
+
+/* Courses Section */
+.courses {
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+    font-size: 1rem;
+}
+
+.courses h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.course-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.course-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 400px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+}
+
+.course-card img {
+    width: 100%;
+    height: 230px;
+    border-radius: 8px;
+}
+
+.course-card h3 {
+    margin: 15px 0 10px;
+    font-size: 1.25rem;
+}
+
+.course-card p {
+    font-size: 0.875rem;
+    color: gray;
+}
+
+/* User Feedback Section */
+.user-feedback-section {
+    padding: 2rem 1rem;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0 auto;
+}
+
+.feedback-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #4CAF50;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.feedback-card:hover {
+    transform: translateY(-2px);
+}
+
+.feedback-card p {
+    margin: 0.4rem 0;
+}
+
+.feedback-card strong {
+    font-size: 1rem;
+    color: #111;
+}
+
+/* How It Works Section */
+.how-it-works {
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+}
+
+.how-it-works h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+video {
+    width: 60%;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Review Section */
+.review-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.review-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.review-card:hover {
+    transform: scale(1.05);
+}
+
+.student-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.student-name {
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.course-name {
+    font-size: 1.125rem;
+    color: #0073e6;
+    font-weight: bold;
+}
+
+.student-review {
+    font-size: 1rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.rating {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #ff9900;
+}
+
+/* Footer */
+footer {
+    background-color: #161315;
+    color: white;
+    padding: 40px 0;
+    font-size: 1rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1600px;
+    margin: auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff9800;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ff9800;
+}
+
+.footer-section.social a {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.footer-section.social a:hover {
+    color: #ff9800;
+}
+
+.footer-section.social i {
+    margin-right: 8px;
+}
+
+.footer-bottom {
+    text-align: center;
+    background-color: #008080;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 0.875rem;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.25rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .courses .course-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    video {
+        width: 90%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        padding: 10px 0;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 15px 30px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .courses .course-container {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .course-card {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+}

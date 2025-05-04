@@ -1,0 +1,245 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    transition: background-color 0.5s ease-in-out;
+}
+
+
+/* Terms Section */
+.terms {
+    max-width: 800px;
+    margin: 230px auto;
+    background: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.lists{
+    margin-top: 20px;
+    word-spacing:8px ;
+    line-height: 30px;
+}
+/* Accept Button */
+.accept-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.accept-btn:hover {
+    background: #218838;
+}
+
+/* Footer */
+.foot {
+    text-align: center;
+    background-color:  #008080;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+footer {
+    background-color: #161315;
+    color: white;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff9800;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ff9800;
+}
+
+/* Social Media Icons */
+.footer-section.social a {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.footer-section.social a:hover {
+    color: #ff9800;
+}
+
+.footer-section.social i {
+    margin-right: 8px;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+    text-align: center;
+    background-color: #008080;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 14px;
+}
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .courses .course-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    video {
+        width: 90%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        padding: 10px 0;
+    }
+}
+
+/* Tablet Styles (Portrait & Landscape) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Header */
+    header {
+        padding: 15px 30px;
+    }
+
+    .footer-container {
+        flex-direction: row;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:  #008080;
+    padding: 15px 50px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+header:hover {
+    background-color: black;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-right: 90px;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9800;
+}
+.logs{
+    border-radius: 50px;
+}

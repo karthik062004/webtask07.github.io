@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LearnIt Platform</title>
+  <link rel="stylesheet" href="static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .courses {
+      display: none;
+      transition: all 0.5s ease-in-out;
+    }
+    .courses.visible {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .mn {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .review-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .review-card {
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .user-feedback-section {
+      text-align: center;
+      margin: 50px auto;
+      max-width: 1200px;
+    }
+
+    #feedback-display {
+      display: block;  /* Changed to block */
+      margin-top: 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feedback-card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 100%; /* Full width of the container */
+      max-width: 600px; /* Increase max width */
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      background-color: #f9f9f9;
+      text-align: left;
+      transition: transform 0.3s ease;
+      margin-bottom: 20px; /* Added bottom margin to separate feedbacks */
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feedback-email {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .feedback-text {
+      font-style: italic;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .feedback-rating {
+      font-weight: bold;
+      color: #e67e22;
+    }
+
+    .footer-section a {
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <div class="logo">
+      <img class="logs" src="img/logo.jpg" width="100px" />
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()"></div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="Aboutus.html"><i class="fas fa-user"></i> About us</a></li>
+        <li class="left"><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to the LearnIt Platform</h1>
+    <p>Enhance your skills with our high-quality courses</p>
+    <a href="courses.html" class="btn" onclick="showCourses()">Explore Courses</a>
+  </section>
+
+  <!-- Course Section -->
+  <section class="courses" id="courseSection">
+    <h2>Our Courses</h2>
+    <div class="course-container">
+      <div class="course-card">
+        <img src="img/dev.jpg" alt="Web Development" />
+        <h3>Web Development</h3>
+        <p>Learn HTML, CSS, and JavaScript</p>
+        <a href="#" class="btn">Enroll Now</a>
+      </div>
+      <div class="course-card">
+        <img src="img/sci.jpg" alt="Data Science" />
+        <h3>Data Science</h3>
+        <p>Learn Python, AI, and Machine Learning</p>
+        <a href="#" class="btn">Enroll Now</a>
+      </div>
+      <div class="course-card">
+        <img src="img/cyb.jpg" alt="Cyber Security" />
+        <h3>Cyber Security</h3>
+        <p>Master ethical hacking and security</p>
+        <a href="#" class="btn">Enroll Now</a>
+      </div>
+      <div class="course-card">
+        <img src="img/analy.jpg" alt="Data Analytics" />
+        <h3>Data Analytics</h3>
+        <p>Learn Python, R, SAAS, and Swift</p>
+        <a href="#" class="btn">Enroll Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <p>Watch the video to understand how our platform helps you learn effectively.</p>
+    <video controls>
+      <source src="img/videos/how-it-works.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Courses Reviews -->
+  <h2 class="mn">Courses Reviews</h2>
+  <section class="review-section">
+    <div class="review-card">
+      <img src="img/s1.jpg" alt="Rikitha Sharma" class="student-img" />
+      <h2 class="student-name">Rikitha Sharma</h2>
+      <p class="course-name">Web Development</p>
+      <p class="student-review">
+        "LearnIt provided me with a great foundation in Web Development. The course structure is amazing, and the instructors are very knowledgeable."
+      </p>
+      <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="review-card">
+      <img src="img/s2.jpg" alt="Anish Rao" class="student-img" />
+      <h2 class="student-name">Anish Rao</h2>
+      <p class="course-name">Data Science</p>
+      <p class="student-review">
+        "I learned so much about Machine Learning and AI through LearnIt. The hands-on projects helped me gain real-world experience."
+      </p>
+      <p class="rating">Rating: ⭐⭐⭐⭐☆</p>
+    </div>
+    <div class="review-card">
+      <img src="img/s3.jpg" alt="Vinitha Patel" class="student-img" />
+      <h2 class="student-name">Vinitha Patel</h2>
+      <p class="course-name">Data Analytics</p>
+      <p class="student-review">
+        "The Data Analytics course was well-structured and engaging. The interactive exercises made learning so much fun!"
+      </p>
+      <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
+    </div>
+  </section>
+
+  <!-- User Feedback Section -->
+  <section class="user-feedback-section">
+    <h2>User Feedback</h2>
+    <p>Here's what our learners are saying about their experience with LearnIt:</p>
+    <div id="feedback-display"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <p>&copy; 2025 LearnIt. All Rights Reserved.</p>
+  </footer>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>LearnIt provides high-quality online courses helping learners achieve their career goals.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a><br>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+      <div class="footer-section legal">
+        <h3>Legal</h3>
+        <p>© 2025 LearnIt. All Rights Reserved.</p>
+        <p>Patent No: 1234567890</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script to show courses and feedback -->
+  <script>
+    function showCourses() {
+      const courseSection = document.getElementById("courseSection");
+      courseSection.classList.add("visible");
+      courseSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function toggleMenu() {
+      const navList = document.getElementById("nav-list");
+      navList.classList.toggle("show");
+    }
+
+    // Display feedback from localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const feedbackContainer = document.getElementById("feedback-display");
+      const feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+      if (feedbacks.length === 0) {
+        feedbackContainer.innerHTML = "<p>No feedback available yet.</p>";
+      } else {
+        let feedbackToDisplay = [...feedbacks];
+
+        if (feedbacks.length > 3) {
+          feedbackToDisplay.sort((a, b) => b.rating - a.rating);
+        } else {
+          feedbackToDisplay.reverse();
+        }
+
+        feedbackToDisplay.slice(0, 4).forEach(entry => {
+          const div = document.createElement("div");
+          div.classList.add("feedback-card");
+          div.innerHTML = `
+
+            <div class="feedback-email">${entry.email}</div>
+            <div class="feedback-text">"${entry.feedback}"</div>
+            <div class="feedback-rating">Rating: ⭐ ${entry.rating}/5</div>
+          `;
+          feedbackContainer.appendChild(div);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
