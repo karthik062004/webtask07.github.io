@@ -1,0 +1,51 @@
+    from PIL import Image, ImageDraw, ImageFont
+    from datetime import datetime
+
+    # === Configuration ===
+    name = input("Enter your name: ")
+    output_file = f"Certificate_{name.replace(' ', '_')}.jpg"
+
+    # Load fonts
+    font_title = ImageFont.truetype("arialbd.ttf", 50)
+    font_name = ImageFont.truetype("ariali.ttf", 48)
+    font_text = ImageFont.truetype("arial.ttf", 28)
+    font_small = ImageFont.truetype("arial.ttf", 22)
+
+    # Create certificate base
+    width, height = 1100, 850
+    certificate = Image.new("RGB", (width, height), color="#fefefe")
+    draw = ImageDraw.Draw(certificate)
+
+    # Border
+    draw.rectangle([20, 20, width-20, height-20], outline="#004d4d", width=10)
+
+    # Logo
+    logo = Image.open("logo.jpg").resize((120, 120))
+    certificate.paste(logo, (width//2 - 60, 40))
+
+    # Title
+    draw.text((width//2, 180), "Certificate of Completion", font=font_title, fill="#004d4d", anchor="mm")
+
+    # Body
+    draw.text((width//2, 270), f"This certifies that", font=font_text, fill="#222", anchor="mm")
+    draw.text((width//2, 320), name, font=font_name, fill="#006666", anchor="mm")
+    draw.text((width//2, 380), "has successfully completed the", font=font_text, fill="#222", anchor="mm")
+    draw.text((width//2, 420), "Data Analytics Quiz", font=font_text, fill="#222", anchor="mm")
+    draw.text((width//2, 470), "LearnIt Platform", font=font_text, fill="#004d4d", anchor="mm")
+
+    # Date
+    date_str = f"Date: {datetime.today().strftime('%d-%m-%Y')}"
+    draw.text((width//2, 510), date_str, font=font_small, fill="#444", anchor="mm")
+
+    # Signatures
+    signature1 = Image.open("raj.jpg").resize((180, 60))
+    signature2 = Image.open("din.jpg").resize((180, 60))
+    certificate.paste(signature1, (180, 600))
+    certificate.paste(signature2, (width - 180 - 180, 600))
+
+    draw.text((270, 670), "Rajesh Roa\nChief Executive", font=font_small, fill="#222", anchor="mm")
+    draw.text((width - 270, 670), "Dinesh Kumar\nCourse Mentor", font=font_small, fill="#222", anchor="mm")
+
+    # Save
+    certificate.save(output_file, "JPEG")
+    print(f"✅ Certificate saved as: {output_file}")

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Certificate Generation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      padding: 20px;
+      background-color: white;
+      margin: 50px auto;
+      width: 80%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #certificate {
+      border: 10px solid #004d4d;
+      padding: 30px;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0, 77, 77, 0.3);
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    #certificate h1 {
+      font-size: 36px;
+      color: #004d4d;
+      margin-bottom: 20px;
+    }
+    #certificate p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    #certificate .name {
+      font-size: 30px;
+      font-weight: bold;
+      color: #006666;
+      font-family: 'Great Vibes', cursive;
+    }
+    #certificate img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-top: 30px;
+    }
+    #download-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #004d4d;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #download-btn:hover {
+      background-color: #006666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="certificate-container">
+      <h1>Certificate of Completion</h1>
+      <div id="certificate" style="display: none;">
+        <img src="https://via.placeholder.com/100" alt="Logo">
+        <p>This certifies that</p>
+        <p class="name" id="user-name"></p>
+        <p>has successfully completed the Data Analytics Quiz</p>
+        <p><strong>LearnIt Platform</strong></p>
+        <p><small>Date: <span id="date"></span></small></p>
+        <button id="download-btn">Download Certificate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    // Assuming the user's name is passed from another code section
+    let userName = "John Doe"; // This would be dynamically passed from other code
+    let certificateDate = new Date().toLocaleDateString();
+
+    function generateCertificate(name) {
+      document.getElementById('user-name').innerText = name;
+      document.getElementById('date').innerText = certificateDate;
+
+      // Show the certificate container
+      document.getElementById('certificate').style.display = 'block';
+    }
+
+    // Generate certificate when the page loads
+    generateCertificate(userName);
+
+    // Download certificate as JPG
+    document.getElementById('download-btn').addEventListener('click', function () {
+      const certificateElement = document.getElementById('certificate');
+
+      html2canvas(certificateElement).then(canvas => {
+        const imgData = canvas.toDataURL('image/jpeg', 1.0);
+        const link = document.createElement('a');
+        link.download = `${userName.replace(/\s+/g, '_')}_Certificate.jpg`;
+        link.href = imgData;
+        link.click();
+      }).catch(err => {
+        console.error('Error generating JPG:', err);
+        alert('There was an error generating the certificate image.');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #e3f2fd, #f8bbd0);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .payment-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .pay-btn, .upi-btn {
+            width: 90%;
+            background: #a18cd1;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+            margin: 10px auto;
+        }
+        .processing-message,
+        .scanner-message,
+        .upi-input {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .card-details {
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+        .pay-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin: 10px auto;
+        }
+        .pay-buttons button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            box-sizing: border-box;
+        }
+        .google-pay { background: #4285F4; }
+        .phonepe-pay { background: #3D00A0; }
+        .upi-btn-container {
+            display: flex;
+            justify-content: center;
+            width: 90%;
+            margin: 10px auto;
+        }
+        .upi-btn { background: #FF6600; width: 100%; }
+        .pay-buttons img, .upi-btn img {
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+        }
+        .scanner-message img {
+            width: 150px;
+            height: 150px;
+        }
+        .pay-buttons span, .upi-btn span {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container" id="payment-container">
+        <div class="card-details" id="card-details">
+            <h3>SUBSCRIPTION</h3>
+            <input type="text" id="card-number" placeholder="Card Number" required>
+            <input type="text" id="cardholder-name" placeholder="Cardholder" required>
+            <input type="text" id="expiry-date" placeholder="MM/YY" required>
+            <input type="text" id="cvv" placeholder="CVV" required>
+            <button class="pay-btn" id="pay-button">Pay</button>
+        </div>
+        <div class="processing-message" id="processing-message">
+            Processing your payment, please wait...
+        </div>
+        <div class="scanner-message" id="scanner-message">
+            <img src="img\payment.jpg" alt="Scanner">
+        </div>
+        <div class="upi-input" id="upi-input">
+            <input type="text" id="upi-id" placeholder="Enter UPI ID" required>
+            <button class="pay-btn" onclick="processUPIPayment()">Submit</button>
+        </div>
+        <div class="pay-buttons">
+            <button class="google-pay" onclick="showScanner('Google Pay')">
+                <img src="img\gpay.png" alt="Google Pay">
+            </button>
+            <button class="phonepe-pay" onclick="showScanner('PhonePe')">
+                <img src="img\phonepe.png" alt="PhonePe"> <span>PhonePe</span>
+            </button>
+        </div>
+        <div class="upi-btn-container">
+            <button class="upi-btn" onclick="showUPIInput()">
+                <img src="img\upi.png" alt="UPI"> <span>UPI</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pay-button').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Validate payment details
+            var cardNumber = document.getElementById('card-number').value;
+            var cardholderName = document.getElementById('cardholder-name').value;
+            var expiryDate = document.getElementById('expiry-date').value;
+            var cvv = document.getElementById('cvv').value;
+
+            if (!cardNumber || !cardholderName || !expiryDate || !cvv) {
+                alert('Please enter valid payment details.');
+                return;
+            }
+
+            // Display processing message
+            document.getElementById('processing-message').style.display = 'block';
+
+            // Simulate payment processing delay
+            setTimeout(function() {
+                // Hide processing message
+                document.getElementById('processing-message').style.display = 'none';
+
+                // Process payment (simulate success)
+                alert('Subscription purchased successfully!');
+                window.location.href = 'dafinal.html'; // Redirect to success page after alert
+            }, 5000); // 5000 milliseconds = 5 seconds
+        });
+
+        function showScanner(paymentMethod) {
+            minimizeCardDetails();
+            document.getElementById('scanner-message').style.display = 'block';
+
+            // Simulate scanner delay
+            setTimeout(function() {
+                document.getElementById('scanner-message').style.display = 'none';
+                alert(paymentMethod + ' payment processed successfully!');
+                window.location.href = 'dafinal.html'; // Redirect to success page after alert
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+        function showUPIInput() {
+            minimizeCardDetails();
+            document.getElementById('upi-input').style.display = 'block';
+        }
+
+        function processUPIPayment() {
+            var upiId = document.getElementById('upi-id').value;
+            if (!upiId) {
+                alert('Please enter a valid UPI ID.');
+                return;
+            }
+
+            // Display processing message
+            document.getElementById('processing-message').style.display = 'block';
+
+            // Simulate UPI payment processing delay
+            setTimeout(function() {
+                // Hide processing message
+                document.getElementById('processing-message').style.display = 'none';
+
+                // Process payment (simulate success)
+                alert('Subscription purchased successfully!');
+                window.location.href = 'dafinal.html'; // Redirect to success page after alert
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+        function minimizeCardDetails() {
+            document.getElementById('card-details').style.maxHeight = '0';
+        }
+
+        function maximizeCardDetails() {
+            document.getElementById('card-details').style.maxHeight = '500px';
+        }
+
+        // Initially maximize card details
+        maximizeCardDetails();
+    </script>
+</body>
+</html>

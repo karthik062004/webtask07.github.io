@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analytics Courses - LearnIt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #008080;
+      padding: 15px 50px;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    header:hover {
+      background-color: #006666;
+    }
+
+    .logo img {
+      border-radius: 50%;
+      height: 60px;
+      width: 60px;
+      object-fit: cover;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9800;
+    }
+
+    main {
+      flex: 1;
+      margin-top: 90px;
+      padding: 30px;
+    }
+
+    .hero {
+      background-color: #00a3a3;
+      color: white;
+      padding: 80px 30px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .trial-video-box {
+      background-color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .trial-video video {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 16/9;
+      background-color: #000;
+    }
+
+    .video-info {
+      color: white;
+      margin-top: 15px;
+    }
+
+    .video-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .video-info p {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .related-videos {
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .related-videos h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .related-videos h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #008080;
+    }
+
+    .related-video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .related-video-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .related-video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .video-cover-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
+    }
+
+    .video-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-card-title {
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .assignment-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .assignment-btn {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 12px 35px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .assignment-btn:hover {
+      background-color: #e68a00;
+    }
+
+    footer {
+      background-color: #161315;
+      color: white;
+      padding: 40px 0 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 150px;
+      margin: 0 auto;
+      padding: 10 20px;
+    }
+
+    .footer-section {
+      flex: 1 1 250px;
+      margin-bottom: 30px;
+      padding: 0 15px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #ff9800;
+    }
+
+    .footer-section p, 
+    .footer-section ul li, 
+    .footer-section a {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: #ff9800;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      background-color: #008080;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 90px;
+        right: 20px;
+        background-color: #008080;
+        flex-direction: column;
+        width: 200px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .related-video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="img/logo.jpg" alt="LearnIt Logo">
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+        <li><a href="Aboutus.html"><i class="fas fa-user"></i> About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Data Analytics Courses</h1>
+      <p>Master data analysis techniques with our comprehensive analytics courses designed for all skill levels</p>
+      <div class="trial-video-box">
+        <div class="trial-video">
+          <video id="main-video" controls poster="img/analy.jpg">
+            <source src="videos/da1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h3 id="video-title">1. Data Analytics Introduction</h3>
+            <p id="video-description">Learn the fundamentals of data analytics and its applications in business decision making</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="related-videos">
+      <h2>Data Analytics Courses</h2>
+      <div class="related-video-grid">
+        <div class="related-video-card" onclick="changeVideo('videos/da1.mp4', '1. Data Analytics Introduction', 'Learn the fundamentals of data analytics and its applications in business decision making')">
+          <div class="video-cover-container">
+            <img src="img/analy.jpg" class="video-cover" alt="Data Analytics Intro">
+          </div>
+          <div class="video-card-title">1. Data Analytics Introduction</div>
+        </div>
+        <div class="related-video-card" onclick="changeVideo('videos/da2.mp4', '2. SQL for Data Analysis', 'Master SQL queries for effective data extraction and analysis')">
+          <div class="video-cover-container">
+            <img src="img/analy.jpg" class="video-cover" alt="SQL for Data Analysis">
+          </div>
+          <div class="video-card-title">2. SQL for Data Analysis</div>
+        </div>
+        <div class="related-video-card" onclick="changeVideo('videos/da3.mp4', '3. Power BI Fundamentals', 'Create interactive dashboards and visualizations with Power BI')">
+          <div class="video-cover-container">
+            <img src="img/analy.jpg" class="video-cover" alt="Power BI Fundamentals">
+          </div>
+          <div class="video-card-title">3. Power BI Fundamentals</div>
+        </div>
+        <div class="related-video-card" onclick="changeVideo('videos/da4.mp4', '4. Python Data Analysis', 'Use Python and Pandas for advanced data manipulation')">
+          <div class="video-cover-container">
+            <img src="img/analy.jpg" class="video-cover" alt="Python Data Analysis">
+          </div>
+          <div class="video-card-title">4. Python Data Analysis</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="assignment-section">
+      <button class="assignment-btn" onclick="window.location.href='dataanalystics.html'">
+        <i class="fas fa-download"></i> Download Course Materials
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About LearnIt</h3>
+        <p>We provide industry-relevant courses to help you advance your career in data analytics and other tech fields.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">All Courses</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Learning St, Education City</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@learnit.com</p>
+      </div>
+      <div class="footer-section newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to get updates on new courses and offers</p>
+        <form>
+          <input type="email" placeholder="Your Email" required>
+          <button type="submit" class="assignment-btn" style="padding: 8px 15px; width: 100%; margin-top: 10px;">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 LearnIt. All Rights Reserved. | Designed with <i class="fas fa-heart"></i> by LearnIt Team</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-list').classList.toggle('show');
+    }
+
+    function changeVideo(videoSrc, title, description) {
+      const mainVideo = document.getElementById('main-video');
+      mainVideo.src = videoSrc;
+      mainVideo.poster = "img/analy.jpg";
+      document.getElementById('video-title').textContent = title;
+      document.getElementById('video-description').textContent = description;
+      mainVideo.load();
+      mainVideo.play();
+    }
+  </script>
+</body>
+</html>

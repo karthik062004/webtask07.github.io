@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LearnIt Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: whitesmoke;
+      font-size: 1rem;
+    }
+
+    .logs {
+      border-radius: 90px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #008080;
+      padding: 15px 50px;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease-in-out;
+      font-size: 1.125rem;
+    }
+
+    header:hover {
+      background-color: black;
+    }
+
+    /* Navigation */
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin-right: 90px;
+      gap: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.125rem;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9800;
+    }
+
+    h1, p {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 50px;
+      background: url('img/clgs.jpg') no-repeat center center/cover;
+      color: white;
+      height: 350px;
+      margin-top: 100px;
+      animation: fadeIn 2s ease-in-out;
+      font-size: 1.125rem;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff9800;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e68900;
+    }
+
+    /* Courses Section */
+    .courses {
+      text-align: center;
+      padding: 50px;
+      background-color: white;
+      font-size: 1rem;
+    }
+
+    .courses h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .course-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .course-card {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      height: 400px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .course-card:hover {
+      transform: scale(1.05);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 230px;
+      border-radius: 8px;
+    }
+
+    .course-card h3 {
+      margin: 15px 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .course-card p {
+      font-size: 0.875rem;
+      color: gray;
+    }
+
+    /* User Feedback Section */
+    .user-feedback-section {
+      padding: 2rem 1rem;
+      background-color: #f8f8f8;
+      text-align: center;
+    }
+
+    .feedback-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.2rem;
+      padding: 1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .feedback-card {
+      flex: 0 0 auto;
+      width: 300px;
+      scroll-snap-align: start;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid #4CAF50;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #333;
+      text-align: left;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .feedback-card p {
+      margin: 0.4rem 0;
+    }
+
+    .feedback-card strong {
+      font-size: 1rem;
+      color: #111;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+      font-size: 1rem;
+    }
+
+    .how-it-works h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 60%;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    /* Review Section */
+    .review-section {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      max-width: 1200px;
+    }
+
+    .review-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin: 20px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .review-card:hover {
+      transform: scale(1.05);
+    }
+
+    .student-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .student-name {
+      font-size: 1.25rem;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .course-name {
+      font-size: 1.125rem;
+      color: #0073e6;
+      font-weight: bold;
+    }
+
+    .student-review {
+      font-size: 1rem;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .rating {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #ff9900;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #161315;
+      color: white;
+      padding: 40px 0;
+      font-size: 1rem;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1600px;
+      margin: auto;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      margin: 20px;
+      min-width: 200px;
+    }
+
+    .footer-section.about, .footer-section.legal {
+      text-align: center;
+      flex: 2;
+    }
+
+    .footer-section h3 {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ff9800;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-section p,
+    .footer-section ul {
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ff9800;
+    }
+
+    .footer-section.social a {
+      display: block;
+      margin-bottom: 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .footer-section.social a:hover {
+      color: #ff9800;
+    }
+
+    .footer-section.social i {
+      margin-right: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      background-color: #008080;
+      padding: 10px 0;
+      margin-top: 20px;
+      font-size: 0.875rem;
+    }
+
+    /* Enrollment Popup Styles */
+    .enrollment-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-content {
+      background-color: white;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup-left {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .popup-right {
+      flex: 1;
+      background-color: #f5f5f5;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-right img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .popup-right p {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #333;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Review Section Heading */
+    .mn {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive Styles */
+    @media only screen and (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 1.25rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .courses .course-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .course-card {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+
+      video {
+        width: 90%;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .footer-bottom {
+        padding: 10px 0;
+      }
+
+      .popup-content {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .popup-right {
+        display: none;
+      }
+
+      .feedback-container {
+        padding-bottom: 20px;
+      }
+    }
+
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+      header {
+        padding: 15px 30px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .courses .course-container {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .course-card {
+        width: 45%;
+        margin-bottom: 20px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <div class="logo">
+      <img class="logs" src="img/logo.jpg" width="100px" />
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()"></div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="Aboutus.html"><i class="fas fa-user"></i> About us</a></li>
+        <li class="left"><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to the LearnIt Platform</h1>
+    <p>Enhance your skills with our high-quality courses</p>
+    <a href="courses.html" class="btn" onclick="showCourses()">Explore Courses</a>
+  </section>
+
+  <!-- Course Section -->
+  <section class="courses" id="courseSection">
+    <h2>PRE REGISTRATION</h2>
+    <div class="course-container">
+      <div class="course-card">
+        <img src="img/dev.jpg" alt="Web Development" />
+        <h3>Web Development</h3>
+        <p>Learn HTML, CSS, and JavaScript</p>
+        <a href="#" class="btn enroll-btn" data-course="Web Development">Enroll Now</a>
+      </div>
+      <div class="course-card">
+        <img src="img/sci.jpg" alt="Data Science" />
+        <h3>Data Science</h3>
+        <p>Learn Python, AI, and Machine Learning</p>
+        <a href="#" class="btn enroll-btn" data-course="Data Science">Enroll Now</a>
+      </div>
+      <div class="course-card">
+        <img src="img/cyb.jpg" alt="Cyber Security" />
+        <h3>Cyber Security</h3>
+        <p>Master ethical hacking and security</p>
+        <a href="#" class="btn enroll-btn" data-course="Cyber Security">Enroll Now</a>
+      </div>
+      <div class="course-card">
+        <img src="img/analy.jpg" alt="Data Analytics" />
+        <h3>Data Analytics</h3>
+        <p>Learn Python, R, SAAS, and Swift</p>
+        <a href="#" class="btn enroll-btn" data-course="Data Analytics">Enroll Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <p>Watch the video to understand how our platform helps you learn effectively.</p>
+    <video controls>
+      <source src="img/videos/how-it-works.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Courses Reviews -->
+  <h2 class="mn">Courses Reviews</h2>
+  <section class="review-section">
+    <div class="review-card">
+      <img src="img/s1.jpg" alt="Rikitha Sharma" class="student-img" />
+      <h2 class="student-name">Rikitha Sharma</h2>
+      <p class="course-name">Web Development</p>
+      <p class="student-review">
+        "LearnIt provided me with a great foundation in Web Development. The course structure is amazing, and the instructors are very knowledgeable."
+      </p>
+      <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="review-card">
+      <img src="img/s2.jpg" alt="Anish Rao" class="student-img" />
+      <h2 class="student-name">Anish Rao</h2>
+      <p class="course-name">Data Science</p>
+      <p class="student-review">
+        "I learned so much about Machine Learning and AI through LearnIt. The hands-on projects helped me gain real-world experience."
+      </p>
+      <p class="rating">Rating: ⭐⭐⭐⭐☆</p>
+    </div>
+    <div class="review-card">
+      <img src="img/s3.jpg" alt="Vinitha Patel" class="student-img" />
+      <h2 class="student-name">Vinitha Patel</h2>
+      <p class="course-name">Data Analytics</p>
+      <p class="student-review">
+        "The Data Analytics course was well-structured and engaging. The interactive exercises made learning so much fun!"
+      </p>
+      <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
+    </div>
+  </section>
+
+  <!-- User Feedback Section -->
+  <section class="user-feedback-section">
+    <h2>User Feedback</h2>
+    <p>Here's what our learners are saying about their experience with LearnIt:</p>
+    <div class="feedback-container" id="feedback-display">
+      <!-- Feedback cards will be inserted here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>LearnIt provides high-quality online courses helping learners achieve their career goals. Our mission is to make education accessible to everyone, everywhere.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a><br>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+      <div class="footer-section legal">
+        <h3>Legal</h3>
+        <p>© 2025 LearnIt. All Rights Reserved.</p>
+        <p>Patent No: 1234567890</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 LearnIt. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Enrollment Popup -->
+  <div class="enrollment-popup" id="enrollmentPopup">
+    <div class="popup-content">
+      <div class="popup-left">
+        <h2>Enroll in this Course</h2>
+        <form id="enrollmentForm">
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" readonly>
+          </div>
+          <button type="submit" class="btn">Submit Enrollment</button>
+        </form>
+      </div>
+      <div class="popup-right">
+        <img src="img/logo.jpg" alt="Enrollment Image">
+        <p>Join thousands of students learning with us!</p>
+      </div>
+      <span class="close-btn" onclick="closeEnrollmentPopup()">&times;</span>
+    </div>
+  </div>
+
+  <!-- Script to show courses and feedback -->
+  <script>
+    function showCourses() {
+      const courseSection = document.getElementById("courseSection");
+      courseSection.classList.add("visible");
+      courseSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function toggleMenu() {
+      const navList = document.getElementById("nav-list");
+      navList.classList.toggle("show");
+    }
+
+    // Enrollment Popup Functions
+    function openEnrollmentPopup(courseName) {
+      document.getElementById('course').value = courseName;
+      document.getElementById('enrollmentPopup').style.display = 'flex';
+    }
+
+    function closeEnrollmentPopup() {
+      document.getElementById('enrollmentPopup').style.display = 'none';
+    }
+
+    // Handle form submission
+    document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your enrollment! We will contact you soon.');
+      closeEnrollmentPopup();
+      this.reset();
+    });
+
+    // Add event listeners to all enroll buttons
+    document.querySelectorAll('.enroll-btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const courseName = this.getAttribute('data-course');
+        openEnrollmentPopup(courseName);
+      });
+    });
+
+    // Display feedback from localStorage (filtering 4+ star ratings)
+    document.addEventListener("DOMContentLoaded", () => {
+      const feedbackContainer = document.getElementById("feedback-display");
+      
+      // Get feedback from localStorage or use sample data if none exists
+      let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [
+        { email: "student1@example.com", feedback: "Great course! Learned so much about web development.", rating: 5 },
+        { email: "student2@example.com", feedback: "Excellent content and instructors. Highly recommended!", rating: 4 },
+        { email: "student3@example.com", feedback: "The course exceeded my expectations. Worth every penny!", rating: 5 },
+        { email: "student4@example.com", feedback: "Very comprehensive material with practical examples.", rating: 4 },
+        { email: "student5@example.com", feedback: "Perfect for beginners and intermediate learners alike.", rating: 5 }
+      ];
+
+      // Filter to only show 4+ star ratings
+      const highRatedFeedbacks = feedbacks.filter(feedback => feedback.rating >= 4);
+
+      if (highRatedFeedbacks.length === 0) {
+        feedbackContainer.innerHTML = "<p>No high-rated feedback available yet. Be the first to review!</p>";
+      } else {
+        highRatedFeedbacks.forEach(entry => {
+          const div = document.createElement("div");
+          div.classList.add("feedback-card");
+          div.innerHTML = `
+            <div class="feedback-email">${entry.email}</div>
+            <div class="feedback-text">"${entry.feedback}"</div>
+            <div class="feedback-rating">Rating: ${'⭐'.repeat(entry.rating)}</div>
+          `;
+          feedbackContainer.appendChild(div);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

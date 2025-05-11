@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: whitesmoke;
+      font-size: 16px;
+    }
+
+    .logs {
+      border-radius: 90px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #008080;
+      padding: 15px 50px;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+      transition: all 0.3s ease-in-out;
+    }
+
+    header:hover {
+      background-color: black;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin-right: 90px;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9800;
+    }
+
+    /* Mission Section */
+    .mission {
+      margin: 200px;
+      background-color: white;
+      padding: 60px 40px;
+      border-radius: 20px;
+    }
+
+    /* Carousel Section */
+    .carousel-section {
+      padding: 60px 20px;
+      background-color: #f2fefe;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .carousel {
+      overflow: hidden;
+      width: 90%;
+      max-width: 800px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-track img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-track img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Scroll Fade Effect */
+    .mission,
+    .stats,
+    .about,
+    .team,
+    .testimonials,
+    .carousel-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .mission.reveal,
+    .stats.reveal,
+    .about.reveal,
+    .team.reveal,
+    .testimonials.reveal,
+    .carousel-section.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background-color: #008080;
+      color: rgb(252, 243, 243);
+      padding: 40px 20px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      margin: 20px;
+      text-align: center;
+    }
+
+    .stat h3 {
+      font-size: 40px;
+      color: white;
+    }
+
+    /* About Section */
+    .about {
+      display: flex;
+      justify-content: space-between;
+      padding: 60px 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text ul {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .about-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Team Section */
+    .team {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      margin: 10px;
+    }
+
+    .team-members {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .member {
+      text-align: center;
+    }
+
+    .member img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background-color: #e0f7f7;
+      padding: 60px 20px;
+    }
+
+    .testimonial {
+      margin: 20px auto;
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      border-left: 5px solid #008080;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #161315;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px 0;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ff9800;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-section p,
+    .footer-section ul {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a,
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-section a:hover {
+      color: #ff9800;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      background-color: #008080;
+      padding: 10px 0;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    /* Footer alignment changes */
+    .footer-about-content {
+      text-align: right;
+    }
+
+    .footer-legal-content {
+      text-align: left;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-section {
+        min-width: 100%;
+      }
+
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .team-members {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-about-content,
+      .footer-legal-content {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img class="logs" src="img/logo.jpg" width="100px" /></div>
+    <div class="menu-icon" onclick="toggleMenu()"></div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="Aboutus.html"><i class="fas fa-user"></i> About us</a></li>
+        <li><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Your site sections like Mission, About, Stats, etc. go here -->
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section footer-about">
+        <h3>About Us</h3>
+        <div class="footer-about-content">
+          <p>LearnIt is a premier platform providing high-quality online courses in various domains, helping learners achieve their career goals.</p>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses">Courses</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+
+
+      <!-- Team Section -->
+  <section class="team">
+    <h2>Meet the Team</h2>
+    <div class="team-members">
+      <div class="member">
+        <img src="img\john.jpg" alt="Team Member">
+        <h4>Bhavishya K K</h4>
+        <p>Founder</p>
+      </div>
+      <div class="member">
+        <img src="img\pan.jpg" alt="Team Member">
+        <h4>Karthik K K</h4>
+        <p>Founder</p>
+      </div>
+      <div class="member">
+        <img src="img\pan.jpg" alt="Team Member">
+        <h4>Snoha Fernandes</h4>
+        <p>Founder</p>
+      </div>
+    </div>
+  </section>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br />
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a><br />
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a><br />
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+      <div class="footer-section footer-legal">
+        <h3>Legal</h3>
+        <div class="footer-legal-content">
+          <p>© 2025 LearnIt. All Rights Reserved.</p>
+          <p>Patent No: 1234567890</p>
+          <p>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms & Conditions</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed & Developed by LearnIt Team</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var navList = document.getElementById('nav-list');
+      navList.classList.toggle('show');
+    }
+
+    let track = document.querySelector('.carousel-track');
+    let offset = 0;
+
+    setInterval(() => {
+      offset -= 300;
+      if (Math.abs(offset) >= track.scrollWidth / 1.5) {
+        offset = 0;
+      }
+      track.style.transform = `translateX(${offset}px)`;
+    }, 3000);
+
+    const sections = document.querySelectorAll(
+      '.mission, .stats, .about, .team, .testimonials, .carousel-section'
+    );
+
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          section.classList.add('reveal');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

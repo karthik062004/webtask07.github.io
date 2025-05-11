@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        #certificate-container {
+            margin: 20px auto;
+            display: none;
+        }
+        
+        #certificate-img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+        }
+        
+        #downloadButtons {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Certificate Generator</h1>
+        <p>Click the button below to create your custom certificate</p>
+        <button id="generateBtn">Generate Certificate</button>
+        
+        <div id="certificate-container">
+            <img id="certificate-img" src="" alt="Certificate">
+        </div>
+        
+        <div id="downloadButtons">
+            <button id="downloadPdf">Download PDF</button>
+            <button id="downloadJpg">Download JPG</button>
+        </div>
+    </div>
+    
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enter Certificate Details</h2>
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="courseName">Course Name:</label>
+                <select id="courseName">
+                    <option value="">Select a course</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Data Analytics">Data Analytics</option>
+                    <option value="Cyber Security">Cyber Security</option>
+                    <option value="Web Development">Web Development</option>
+                </select>
+            </div>
+            <button id="createCertificate">Create Certificate</button>
+        </div>
+    </div>
+    
+    <script>
+        // Get modal elements
+        const modal = document.getElementById("inputModal");
+        const btn = document.getElementById("generateBtn");
+        const span = document.getElementsByClassName("close")[0];
+        const createBtn = document.getElementById("createCertificate");
+        const certificateImg = document.getElementById("certificate-img");
+        
+        // Show modal when generate button is clicked
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        // Close modal when X is clicked
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Create certificate when form is submitted
+        createBtn.onclick = function() {
+            const fullName = document.getElementById("fullName").value;
+            const courseName = document.getElementById("courseName").value;
+            
+            if (!fullName || !courseName) {
+                alert("Please fill in all fields");
+                return;
+            }
+            
+            // Set current date
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Create a canvas to draw our certificate
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 600;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw certificate background (replace with your actual certificate image)
+            const bgImg = new Image();
+            bgImg.crossOrigin = "Anonymous";
+            bgImg.src = 'certificate-template.jpg'; // Your certificate template image
+            
+            bgImg.onload = function() {
+                // Draw the background image
+                ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+                
+                // Set text styles
+                ctx.font = '32px "Times New Roman", serif';
+                ctx.fillStyle = '#000000';
+                ctx.textAlign = 'center';
+                
+                // Draw the name
+                ctx.fillText(fullName, canvas.width/2, 300);
+                
+                // Draw the course
+                ctx.font = '24px "Times New Roman", serif';
+                ctx.fillText(courseName, canvas.width/2, 350);
+                
+                // Draw the date
+                ctx.font = '16px "Times New Roman", serif';
+                ctx.fillText(dateStr, canvas.width/2, 400);
+                
+                // Convert canvas to image and display
+                certificateImg.src = canvas.toDataURL('image/jpeg');
+                document.getElementById("certificate-container").style.display = "block";
+                document.getElementById("downloadButtons").style.display = "block";
+                
+                // Close the modal
+                modal.style.display = "none";
+            };
+            
+            // Handle image loading error
+            bgImg.onerror = function() {
+                alert("Certificate template image failed to load. Using fallback design.");
+                
+                // Fallback design if image fails to load
+                ctx.fillStyle = '#fff9e6';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = '#d4af37';
+                ctx.lineWidth = 15;
+                ctx.strokeRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw text
+                ctx.font = '36px "Times New Roman", serif';
+                ctx.fillStyle = '#8b4513';
+                ctx.fillText('CERTIFICATE OF COMPLETION', canvas.width/2, 100);
+                
+                ctx.font = '18px "Times New Roman", serif';
+                ctx.fillStyle = '#000000';
+                ctx.fillText('This is to certify that', canvas.width/2, 150);
+                
+                ctx.font = '32px "Times New Roman", serif';
+                ctx.fillText(fullName, canvas.width/2, 220);
+                
+                ctx.font = '18px "Times New Roman", serif';
+                ctx.fillText('has successfully completed the course', canvas.width/2, 270);
+                
+                ctx.font = '24px "Times New Roman", serif';
+                ctx.fillStyle = '#000000';
+                ctx.fillText(courseName, canvas.width/2, 320);
+                
+                ctx.font = '16px "Times New Roman", serif';
+                ctx.fillText('Issued on: ' + dateStr, canvas.width/2, 370);
+                
+                // Convert canvas to image and display
+                certificateImg.src = canvas.toDataURL('image/jpeg');
+                document.getElementById("certificate-container").style.display = "block";
+                document.getElementById("downloadButtons").style.display = "block";
+                
+                // Close the modal
+                modal.style.display = "none";
+            };
+        }
+        
+        // Download as PDF
+        document.getElementById("downloadPdf").onclick = function() {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('l', 'mm', [210, 148]); // A5 landscape
+            
+            // Add certificate image to PDF
+            pdf.addImage(certificateImg.src, 'JPEG', 0, 0, 210, 148);
+            pdf.save('certificate.pdf');
+        };
+        
+        // Download as JPG
+        document.getElementById("downloadJpg").onclick = function() {
+            const link = document.createElement('a');
+            link.download = 'certificate.jpg';
+            link.href = certificateImg.src;
+            link.click();
+        };
+    </script>
+</body>
+</html>

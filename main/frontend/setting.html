@@ -1,0 +1,158 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Settings</title>
+    <link rel="stylesheet" href="static/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="set.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><img class="logs" src="logo.jpg" width="100px"></div>
+        <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            
+        </div>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="contact.html"><i class="fas fa-user"></i> Contact</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> About us</a></li>
+                <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Advanced Settings</h1>
+        <div class="settings-section">
+            <h2>Account Settings</h2>
+            <div class="setting-item">
+                <span>Change Email</span>
+                <a href="#">Edit</a>
+            </div>
+            <div class="setting-item">
+                <span>Change Password</span>
+                <a href="#">Update</a>
+            </div>
+            <div class="setting-item">
+                <span>Manage Subscription</span>
+                <a href="#">Manage</a>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h2>Security</h2>
+            <div class="setting-item">
+                <span>Two-Factor Authentication</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span>Device Activity</span>
+                <a href="#">View</a>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h2>Notifications</h2>
+            <div class="setting-item">
+                <span>Email Notifications</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span>SMS Alerts</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h2>Preferences</h2>
+            <div class="setting-item">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span>Language</span>
+                <select>
+                    <option>English</option>
+                    <option>Kannada</option>
+                    <option>Hindi</option>
+                </select>
+            </div>
+        </div>
+        <div class="privacy">
+            <h2>Other options</h2>
+            <a href="private.html"><span>Privacy and policy</span></a><br><br>
+            <a href="private.html"><span>Help Center</span></a><br><br>
+            <a href="private.html"><span>Feedback</span></a>
+        </div>
+    </div>
+   <!-- Footer -->
+   <footer class="foot">
+    <p>&copy; 2025 LearnIt. All Rights Reserved.</p>
+</footer>
+<!-- Footer Section -->
+<footer>
+<div class="footer-container">
+    
+    <!-- Company Info -->
+    <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>LearnIt is a premier platform providing high-quality online courses in various domains, helping learners achieve their career goals.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="terms.html">terms and conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <!-- Legal & Copyright -->
+    <div class="footer-section legal">
+        <h3>Legal</h3>
+        <p>© 2025 LearnIt. All Rights Reserved.</p>
+        <p>Patent No: 1234567890</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+    </div>
+</div>
+
+
+<script>
+    function toggleMenu() {
+        var navList = document.getElementById('nav-list');
+        navList.classList.toggle('show');
+    }
+</script>
+
+
+<!-- Bottom Footer -->
+<div class="footer-bottom">
+    <p>Designed & Developed by LearnIt Team</p>
+</div>
+</footer>
+</body>
+</html>

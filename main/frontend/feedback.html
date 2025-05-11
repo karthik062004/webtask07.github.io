@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Feedback - E-Learning Site</title>
+  <link rel="stylesheet" href="static\feed.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <div class="logo"><img class="logs" src="img\logo.jpg" width="100px"></div>
+    <!-- Hamburger Menu Icon -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        
+    </div>
+    <nav>
+      <ul id="nav-list">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="Aboutus.html"><i class="fas fa-user"></i> About us</a></li>
+          <li class="left"><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+      </ul>
+  </nav>
+</header>
+
+
+  <div class="container">
+    <div class="feedback-form">
+      <h2>We Value Your Feedback</h2>
+      <p>Tell us about your experience with our LearnIt platform.</p>
+      <form id="feedback-form">
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="feedback">Your Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="5" placeholder="Write your feedback here..." required></textarea>
+
+        <div class="rating">
+            <label for="rating">Rating:</label>
+            <input type="range" id="rating" class="rate" name="rating" min="1" max="5" step="1" value="3" />
+            
+        </div>
+
+        <button type="submit" class="submit-btn">Submit </button>
+      </form>
+      <div id="thank-you-message" class="thank-you-message hidden">
+        <p>Thank you for your feedback!</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Footer -->
+  <footer class="foot">
+    <p>&copy; 2025 LearnIt. All Rights Reserved.</p>
+</footer>
+<!-- Footer Section -->
+<footer>
+<div class="footer-container">
+    
+    <!-- Company Info -->
+    <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>LearnIt is a premier platform providing high-quality online courses in various domains, helping learners achieve their career goals.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses">Courses</a></li>
+          <li><a href="terms.html">terms and conditions</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+  </div>
+
+
+    <!-- Social Media -->
+    <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <!-- Legal & Copyright -->
+    <div class="footer-section legal">
+        <h3>Legal</h3>
+        <p>© 2025 LearnIt. All Rights Reserved.</p>
+        <p>Patent No: 1234567890</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+    </div>
+</div>
+<script>
+  document.getElementById("feedback-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const feedback = document.getElementById("feedback").value;
+    const rating = document.getElementById("rating").value;
+
+    // Create feedback object
+    const newFeedback = {
+      email,
+      feedback,
+      rating,
+      date: new Date().toLocaleString()
+    };
+
+    // Get existing feedbacks from localStorage
+    let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+    // Add new one
+    feedbacks.push(newFeedback);
+
+    // Save back to localStorage
+    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+    // Clear form and show thank you
+    document.getElementById("feedback-form").reset();
+    document.getElementById("thank-you-message").classList.remove("hidden");
+  });
+</script>
+
+
+</body>
+
+</html>
